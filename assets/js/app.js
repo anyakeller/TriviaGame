@@ -45,7 +45,8 @@ var questions = [
     }
 ]; //the questions and answers, [{question:asdf,options:[option1,2,3,4],soluion:asdf}], answer will olway be index 0
 var currentQuestionIndex = 0; //index of the current question
-var timeOutVar;
+var intervalVar;
+var countdown = 10; //how many seconds left
 var correctIncorrectMissed = { correct: [], incorrect: [], missed: [] }; //arrays hold indecies of answered questions
 // ===============================================
 //FUNCTIONS AND WHATNOT
@@ -63,9 +64,16 @@ function displayGame() {
     gameStartDiv.hide();
     var correctAnswerIndex = displayNewQuestion();
     quizDiv.show();
+    timeRemainingSpan.text(countdown);
+    intervalVar = window.setInterval(timer, 1000);
     //Form Response
     questionForm.submit(function(event) {
         event.preventDefault();
+        clearInterval(intervalVar);
+        countdown = 10;
+        timeRemainingSpan.text(countdown);
+        intervalVar = window.setInterval(timer, 1000);
+
         //check answer
         var chosenAnswer = parseInt(
             $("input[name=options]:checked", "#questionForm").val()
@@ -96,6 +104,17 @@ function displayGame() {
         }
     });
 }
+
+// Interval clock function
+function timer() {
+    if (countdown == 0) {
+        questionForm.submit();
+    } else {
+        countdown--;
+        timeRemainingSpan.text(countdown);
+    }
+}
+
 // =======================
 //GAME JS
 
@@ -103,6 +122,7 @@ function displayGame() {
 function getNewQuestion() {
     // event.preventDefault();
     currentQuestionIndex++;
+    questionNumSpan.text(currentQuestionIndex);
     return questions[currentQuestionIndex - 1];
 }
 
