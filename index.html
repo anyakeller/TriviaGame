@@ -11,8 +11,22 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-
-        <title>Physics Quix</title>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+        ></script>
+        <title>Physics Quiz</title>
     </head>
     <body>
         <div id="theWholeThing">
@@ -39,84 +53,71 @@
                             <span id="timeRemaining"></span>
                         </h4>
                     </div>
-                    <div class="col-12 mx-auto my-3" id="answerSpace">
+                    <div class="col-10 mx-auto my-3" id="answerSpace">
                         <div class="d-flex justify-content-center">
-                            <form>
+                            <form style="width: 100%">
                                 <h3>
-                                    <fieldset class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-check">
-                                                    <input
-                                                        class="form-check-input"
-                                                        type="radio"
-                                                        name="quizRadios"
-                                                        id="quizRadiosA"
-                                                        value="a"
-                                                        checked
-                                                    />
-                                                    <label
-                                                        class="form-check-label"
-                                                        for="quizRadiosA"
-                                                    >
-                                                        A
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input
-                                                        class="form-check-input"
-                                                        type="radio"
-                                                        name="quizRadios"
-                                                        id="quizRadiosB"
-                                                        value="b"
-                                                    />
-                                                    <label
-                                                        class="form-check-label"
-                                                        for="quizRadiosB"
-                                                    >
-                                                        B
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input
-                                                        class="form-check-input"
-                                                        type="radio"
-                                                        name="quizRadios"
-                                                        id="quizRadiosC"
-                                                        value="c"
-                                                    />
-                                                    <label
-                                                        class="form-check-label"
-                                                        for="quizRadiosC"
-                                                    >
-                                                        C
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input
-                                                        class="form-check-input"
-                                                        type="radio"
-                                                        name="quizRadios"
-                                                        id="quizRadiosD"
-                                                        value="d"
-                                                    />
-                                                    <label
-                                                        class="form-check-label"
-                                                        for="quizRadiosD"
-                                                    >
-                                                        D
-                                                    </label>
-                                                </div>
-                                            </div>
+                                    <div class="form-group">
+                                        <div
+                                            class="btn-group-toggle"
+                                            data-toggle="buttons"
+                                        >
+                                            <label
+                                                class="btn btn-secondary active btn-lg btn-block"
+                                                >A
+                                                <input
+                                                    type="radio"
+                                                    name="options"
+                                                    id="quizRadiosA"
+                                                    autocomplete="off"
+                                                    checked
+                                                />
+                                                <span id="optn1"></span>
+                                            </label>
+
+                                            <label
+                                                class="btn btn-secondary btn-lg btn-block"
+                                                >B
+                                                <input
+                                                    type="radio"
+                                                    name="options"
+                                                    id="quizRadiosB"
+                                                    autocomplete="off"
+                                                />
+                                                <span id="optn2"></span>
+                                            </label>
+                                            <label
+                                                class="btn btn-secondary btn-lg btn-block"
+                                                >C
+                                                <input
+                                                    type="radio"
+                                                    name="options"
+                                                    id="quizRadiosC"
+                                                    autocomplete="off"
+                                                />
+                                                <span id="optn3"></span>
+                                            </label>
+                                            <label
+                                                class="btn btn-secondary btn-lg btn-block"
+                                                >D
+                                                <input
+                                                    type="radio"
+                                                    name="options"
+                                                    id="quizRadiosD"
+                                                    autocomplete="off"
+                                                />
+                                                <span id="optn4"></span>
+                                            </label>
                                         </div>
-                                    </fieldset>
-                                    <div class="form-group row">
-                                        <div class="col-sm-10">
+                                    </div>
+                                    <div class="form-group my-3">
+                                        <div class="col-sm-12">
                                             <button
+                                                id="nextQuestionBtn"
                                                 type="submit"
-                                                class="btn btn-primary"
+                                                class="btn btn-primary btn-sm btn-block"
                                             >
-                                                Submit
+                                                Next Question
                                             </button>
                                         </div>
                                     </div>
@@ -127,6 +128,7 @@
                 </div>
             </div>
         </div>
+
         <script src="assets/js/app.js"></script>
     </body>
 </html>
