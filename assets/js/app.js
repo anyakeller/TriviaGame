@@ -11,15 +11,24 @@ var timeRemainingSpan = $("#timeRemaining");
 //Form
 var nextQuestionBtn = $("#nextQuestionBtn");
 var questionForm = $("#questionForm");
-var optn0 = $("#optn0");
-var optn1 = $("#optn1");
-var optn2 = $("#optn2");
-var optn3 = $("#optn3");
+var optionButtons = [$("#optn0"), $("#optn1"), $("#optn2"), $("#optn3")];
+//Results
+var resultsDiv = $("#resultsDiv");
+var scoreSpan = $("#score");
+var numQuestionsSpan = $("#numQuestions");
+var numIncorrectSpan = $("#numIncorrect");
+var numMissedSpan = $("#numMissed");
+
 //GLOBALS
 var questions = [
     {
         question: "Which are corret units for the gravitational constant?",
-        options: ["[N][m]", "[k][q1][q2]/[r^2]", "1/2[m][v^2]"],
+        options: [
+            "[g][m1][m2]/[r^2]",
+            "[N][m]",
+            "[k][q1][q2]/[r^2]",
+            "1/2[m][v^2]"
+        ],
         solution:
             "use dimentional analyis using radius and mass to solve for force"
     },
@@ -50,17 +59,36 @@ startGameBtn.on("click", function() {
 });
 //change to game display
 function displayGame() {
+    numQuestionsSpan.text(questions.length);
     gameStartDiv.hide();
     var correctAnswerIndex = displayNewQuestion();
     quizDiv.show();
     //Form Response
     questionForm.submit(function(event) {
         event.preventDefault();
+        //check answer
         var chosenAnswer = parseInt(
             $("input[name=options]:checked", "#questionForm").val()
         );
+        if (isNaN(chosenAnswer)) {
+            chosenAnswer = -1;
+        }
+        if (chosenAnswer == correctAnswerIndex) {
+            correctIncorrectMissed.correct.push(currentQuestionIndex);
+            console.log("correct");
+        } else if (chosenAnswer == -1) {
+            correctIncorrectMissed.missed.push(currentQuestionIndex);
+            console.log("question missed");
+        } else {
+            correctIncorrectMissed.incorrect.push(currentQuestionIndex);
+            console.log("incorrect");
+        }
+        //try to load a new question
         correctAnswerIndex = displayNewQuestion();
+        //if game is over
         if (correctAnswerIndex == -1) {
+            quizDiv.hide();
+            endgame();
             console.log(correctIncorrectMissed.correct);
             console.log(correctIncorrectMissed.incorrect);
             console.log(correctIncorrectMissed.missed);
@@ -70,11 +98,6 @@ function displayGame() {
 }
 // =======================
 //GAME JS
-
-// nextQuestionBtn.on("click", function(event) {
-//     event.preventDefault();
-//     displayNewQuestion();
-// });
 
 //Get New Question
 function getNewQuestion() {
@@ -106,14 +129,24 @@ function displayNewQuestion() {
     if (currentQuestionIndex >= questions.length) {
         return -1;
     } else {
+        $(".active").prop("checked", false);
+        $(".active").removeClass("active");
         var newQ = getNewQuestion();
         questionSpan.text(newQ.question);
         var reorderedOptions = randomizeAnswerOpions(newQ.options, [], 0);
-        optn0.text(reorderedOptions[0]);
-        optn1.text(reorderedOptions[1]);
-        optn2.text(reorderedOptions[2]);
-        optn3.text(reorderedOptions[3]);
-        var correctAnswerIndex = reorderedOptions[4];
-        return correctAnswerIndex;
+        optionButtons[0].text(reorderedOptions[0]);
+        optionButtons[1].text(reorderedOptions[1]);
+        optionButtons[2].text(reorderedOptions[2]);
+        optionButtons[3].text(reorderedOptions[3]);
+
+        return reorderedOptions[4];
     }
+}
+
+//ENDGAME
+function endgame() {
+    scoreSpan.text(correctIncorrectMissed.correct.length);
+    numIncorrectSpan.text(correctIncorrectMissed.incorrect.length);
+    numMissedSpan.text(correctIncorrectMissed.missed.length);
+    resultsDiv.show();
 }

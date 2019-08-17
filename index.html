@@ -89,7 +89,7 @@
                                                     data-toggle="buttons"
                                                 >
                                                     <label
-                                                        class="btn btn-secondary active btn-lg btn-block"
+                                                        class="btn btn-secondary btn-lg btn-block"
                                                         >A.
                                                         <input
                                                             type="radio"
@@ -97,7 +97,6 @@
                                                             id="quizRadiosA"
                                                             autocomplete="off"
                                                             value="0"
-                                                            checked
                                                         />
                                                         <span id="optn0"></span>
                                                     </label>
@@ -156,6 +155,21 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <!-- Hide Results Div -->
+                <div id="resultsDiv" style="display:none;">
+                    <div class="jumbotron mx-5 py-1">
+                        <h2 class="display-4">Results</h2>
+                        <p class="lead">
+                            Score: <span id="score"></span> correct out of
+                            <span id="numQuestions"></span>
+                        </p>
+                        <p>
+                            Incorrect Questions:
+                            <span id="numIncorrect"></span>
+                        </p>
+                        <p>Missed Questions: <span id="numMissed"></span></p>
                     </div>
                 </div>
             </div>
