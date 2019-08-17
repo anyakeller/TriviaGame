@@ -39,90 +39,122 @@
                         <h1 class="text-center">Physics Quiz</h1>
                     </div>
                 </div>
-                <div class="row mx-auto my-4 px-4">
-                    <div class="col-12 mx-auto " id="questionInfo">
-                        <h2 class="text-center" my-1>
-                            <span id="question"></span>
-                        </h2>
-                        <h4 class="text-center py-0 my-0">
-                            Question Number
-                            <span id="questionNum"></span>
-                        </h4>
-                        <h4 class="text-center py-0 my-0">
-                            Time Remaining
-                            <span id="timeRemaining"></span>
-                        </h4>
+                <div id="gameStartDiv">
+                    <div class="row mx-auto my-4 px-4">
+                        <div class="jumbotron mx-5">
+                            <h2>Begin Game</h2>
+                            <p class="lead">
+                                Answereach question before the time runs out.
+                            </p>
+                            <hr class="my-2" />
+                            <p>
+                                Read Before Beginning: Metric units Assume no
+                                air resistence for kinematics, g=9.81m/s, round
+                                to the nearest tenth.
+                            </p>
+                            <button
+                                class="btn btn-primary btn-lg"
+                                id="startGame"
+                                role="button"
+                            >
+                                Start
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-10 mx-auto my-3" id="answerSpace">
-                        <div class="d-flex justify-content-center">
-                            <form style="width: 100%">
-                                <h3>
-                                    <div class="form-group">
-                                        <div
-                                            class="btn-group-toggle"
-                                            data-toggle="buttons"
-                                        >
-                                            <label
-                                                class="btn btn-secondary active btn-lg btn-block"
-                                                >A
-                                                <input
-                                                    type="radio"
-                                                    name="options"
-                                                    id="quizRadiosA"
-                                                    autocomplete="off"
-                                                    checked
-                                                />
-                                                <span id="optn1"></span>
-                                            </label>
+                </div>
+                <!-- hide the game at first -->
+                <div id="quizDiv" style="display:none;">
+                    <div class="jumbotron mx-5 py-1">
+                        <div class="row mx-auto my-4 px-4">
+                            <div class="col-12 mx-auto " id="questionInfo">
+                                <h2 class="text-center" my-1>
+                                    <span id="question"></span>
+                                </h2>
+                                <h4 class="text-center py-0 my-0">
+                                    Question Number
+                                    <span id="questionNum"></span>
+                                </h4>
+                                <h4 class="text-center py-0 my-0">
+                                    Time Remaining
+                                    <span id="timeRemaining"></span>
+                                </h4>
+                            </div>
+                            <div class="col-10 mx-auto my-3" id="answerSpace">
+                                <div class="d-flex justify-content-center">
+                                    <form style="width: 100%" id="questionForm">
+                                        <h3>
+                                            <div class="form-group">
+                                                <div
+                                                    class="btn-group-toggle"
+                                                    data-toggle="buttons"
+                                                >
+                                                    <label
+                                                        class="btn btn-secondary active btn-lg btn-block"
+                                                        >A.
+                                                        <input
+                                                            type="radio"
+                                                            name="options"
+                                                            id="quizRadiosA"
+                                                            autocomplete="off"
+                                                            value="0"
+                                                            checked
+                                                        />
+                                                        <span id="optn0"></span>
+                                                    </label>
 
-                                            <label
-                                                class="btn btn-secondary btn-lg btn-block"
-                                                >B
-                                                <input
-                                                    type="radio"
-                                                    name="options"
-                                                    id="quizRadiosB"
-                                                    autocomplete="off"
-                                                />
-                                                <span id="optn2"></span>
-                                            </label>
-                                            <label
-                                                class="btn btn-secondary btn-lg btn-block"
-                                                >C
-                                                <input
-                                                    type="radio"
-                                                    name="options"
-                                                    id="quizRadiosC"
-                                                    autocomplete="off"
-                                                />
-                                                <span id="optn3"></span>
-                                            </label>
-                                            <label
-                                                class="btn btn-secondary btn-lg btn-block"
-                                                >D
-                                                <input
-                                                    type="radio"
-                                                    name="options"
-                                                    id="quizRadiosD"
-                                                    autocomplete="off"
-                                                />
-                                                <span id="optn4"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group my-3">
-                                        <div class="col-sm-12">
-                                            <button
-                                                id="nextQuestionBtn"
-                                                type="submit"
-                                                class="btn btn-primary btn-sm btn-block"
-                                            >
-                                                Next Question
-                                            </button>
-                                        </div>
-                                    </div>
-                                </h3>
-                            </form>
+                                                    <label
+                                                        class="btn btn-secondary btn-lg btn-block"
+                                                        >B.
+                                                        <input
+                                                            type="radio"
+                                                            name="options"
+                                                            id="quizRadiosB"
+                                                            autocomplete="off"
+                                                            value="1"
+                                                        />
+                                                        <span id="optn1"></span>
+                                                    </label>
+                                                    <label
+                                                        class="btn btn-secondary btn-lg btn-block"
+                                                        >C.
+                                                        <input
+                                                            type="radio"
+                                                            name="options"
+                                                            id="quizRadiosC"
+                                                            autocomplete="off"
+                                                            value="2"
+                                                        />
+                                                        <span id="optn2"></span>
+                                                    </label>
+                                                    <label
+                                                        class="btn btn-secondary btn-lg btn-block"
+                                                        >D.
+                                                        <input
+                                                            type="radio"
+                                                            name="options"
+                                                            id="quizRadiosD"
+                                                            autocomplete="off"
+                                                            value="3"
+                                                        />
+                                                        <span id="optn3"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group my-3">
+                                                <div class="col-sm-12">
+                                                    <button
+                                                        id="nextQuestionBtn"
+                                                        type="submit"
+                                                        class="btn btn-primary btn-sm btn-block"
+                                                    >
+                                                        Next Question
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </h3>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
