@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+        <title>Physics Quix</title>
+    </head>
+    <body>
+        <div id="theWholeThing">
+            <div class="container-fluid py-4">
+                <div class="row mx-auto my-2 px-5">
+                    <div
+                        class="col-12 rounded-lg border border-white"
+                        id="gameTitle"
+                    >
+                        <h1 class="text-center">Physics Quiz</h1>
+                    </div>
+                </div>
+                <div class="row mx-auto my-4 px-4">
+                    <div class="col-12 mx-auto " id="questionInfo">
+                        <h2 class="text-center" my-1>
+                            <span id="question"></span>
+                        </h2>
+                        <h4 class="text-center py-0 my-0">
+                            Question Number
+                            <span id="questionNum"></span>
+                        </h4>
+                        <h4 class="text-center py-0 my-0">
+                            Time Remaining
+                            <span id="timeRemaining"></span>
+                        </h4>
+                    </div>
+                    <div class="col-12 mx-auto my-3" id="answerSpace">
+                        <div class="d-flex justify-content-center">
+                            <form>
+                                <h3>
+                                    <fieldset class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-check">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="quizRadios"
+                                                        id="quizRadiosA"
+                                                        value="a"
+                                                        checked
+                                                    />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="quizRadiosA"
+                                                    >
+                                                        A
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="quizRadios"
+                                                        id="quizRadiosB"
+                                                        value="b"
+                                                    />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="quizRadiosB"
+                                                    >
+                                                        B
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="quizRadios"
+                                                        id="quizRadiosC"
+                                                        value="c"
+                                                    />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="quizRadiosC"
+                                                    >
+                                                        C
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="quizRadios"
+                                                        id="quizRadiosD"
+                                                        value="d"
+                                                    />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="quizRadiosD"
+                                                    >
+                                                        D
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group row">
+                                        <div class="col-sm-10">
+                                            <button
+                                                type="submit"
+                                                class="btn btn-primary"
+                                            >
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </h3>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/app.js"></script>
+    </body>
+</html>
